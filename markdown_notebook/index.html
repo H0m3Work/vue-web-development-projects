@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Notebook</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- Include the library in the page -->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<!-- Add the marked library: -->
+		<script src="https://unpkg.com/marked"></script>
+
+		<!-- Notebook app -->
+		<div id="notebook">
+
+			<!-- Sidebar -->
+			<aside class="side-bar">
+				<!-- Toolbar -->
+				<div class="toolbar">
+					<!-- Add note button -->
+					<button @click="addNote" :title="addButtonTitle"><i class="material-icons">add</i> Add note</button>
+				</div>
+			</aside>
+
+			<!-- Main pane -->
+			<section class="main">
+				<textarea v-model="content"></textarea>
+			</section>
+
+			<!-- Preview pane -->
+			<aside class="preview" v-html="notePreview"></aside>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
