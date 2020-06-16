@@ -8,31 +8,33 @@ new Vue({
 		return {
 			content: localStorage.getItem('content') || 'You can write in **markdown**',
 			// content: 'This is a note',
-			notes: [],
+			notes: JSON.parse(localStorage.getItem('notes') || [],
+			// Id of the selected note
+			selectedId: null
 		}
 	},
 
 	// Computed properties
 	computed: {
 		notePreview () {
-			return marked(this.content)
+			return this.selectedNote ? marked(this.selectedNote.content) : ''
 		},
 		addButtonTitle () {
-			return notes.length + ' note(s) already'
+			return this.notes.length + ' note(s) already'
+		},
+		selectedNote () {
+			// We return the matching note with selectedId
+			return this.notes.find(note => note.id === this.selectedId)
 		}
 	},
 
 	// Change watches
 	watch: {
-		// Watching 'content' data property
-		content: {
-			handler (val, oldVal) {
-				console.log('new note: ', val, 'old note: ', oldVal)
-				console.log('saving note: ', this.content)
-				localStorage.setItem('content', this.content)
-			},
-			immediate: true
-		},
+		notes: {
+			// The method name
+			handler: 'saveNote',
+			// We need this to watch each note's properties inside the array
+			deep: true,
 	},
 
 	// 
@@ -52,12 +54,16 @@ new Vue({
 			this.notes.push(note)
 		},
 		saveNote () {
-			console.log('saving note: ', this.content)
-			localStorage.setItem('content', this.content)
-			this.reportOperation('saving')
+			// Don't forget to stringify to JSON before storing
+			localStorage.setItem('notes', JSON.stringify(this.notes))
+			console.log('Notes saved!', new Date())
 		},
 		reportOperation (opName) {
 			console.log('The', opName, 'operation was completed!')
+		},
+		selectNote (note) {
+			this.selectedId = note.id
+			console.log(this.selectedId)
 		}
 	},
 
