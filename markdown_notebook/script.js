@@ -8,9 +8,9 @@ new Vue({
 		return {
 			content: localStorage.getItem('content') || 'You can write in **markdown**',
 			// content: 'This is a note',
-			notes: JSON.parse(localStorage.getItem('notes') || [],
+			notes: JSON.parse(localStorage.getItem('notes')) || [],
 			// Id of the selected note
-			selectedId: null
+			selectedId: null,
 		}
 	},
 
@@ -35,6 +35,7 @@ new Vue({
 			handler: 'saveNote',
 			// We need this to watch each note's properties inside the array
 			deep: true,
+		}
 	},
 
 	// 
