@@ -1,0 +1,118 @@
+html,
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.material-icons {
+    font-size: inherit;
+}
+
+#notebook {
+    display: flex;
+    height: 100%;
+}
+
+.side-bar,
+.main,
+.preview {
+    padding-top: 10px;
+}
+
+.side-bar {
+    flex-grow: 2;
+    flex-basis: 20%;
+    background: rgb(248, 248, 248);
+}
+
+.main {
+    flex-grow: 4;
+    border-right: 5px solid rgb(248, 248, 248);
+    padding-left: 5px;
+    flex-basis: 40%;
+}
+
+.preview {
+    flex-grow: 4;
+    flex-basis: 40%;
+    margin-left: 5px;
+    overflow: scroll;
+}
+
+button {
+    border: none;
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background: rgb(64, 184, 131);
+    height: 2em;
+}
+
+textarea {
+    width: 100%;
+    height: 90%;
+    padding: 1em;
+    border: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.add-note {
+    margin-left: 3px;
+    padding: 0.5em;
+}
+
+.notes {
+    margin-top: 0.5em;
+}
+
+.note {
+    display: block;
+    padding: 1em 0.5em;
+}
+
+.note>i {
+    float: right;
+}
+
+.selected {
+    background-color: rgb(64, 184, 131);
+    color: white;
+}
+
+.status-bar {
+    position: absolute;
+    bottom: 1%;
+}
+
+.form-title input[type=text] {
+    background-color: rgb(240, 249, 245);
+    box-sizing: border-box;
+    border: 2px solid rgb(173, 226, 202);
+    height: 2em;
+    font-size: 16px;
+    width: 70%;
+}
+
+.form-title input[type=text]:focus {
+    border: 2px solid rgb(173, 226, 202);
+    outline: none;
+
+}
+
+.form-title {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.form-title button {
+	margin-left: 5px;
+	padding: 0.5em;
+}
