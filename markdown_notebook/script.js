@@ -8,7 +8,6 @@ new Vue({
 	// Some data
 	data() {
 		return {
-			content: localStorage.getItem('content') || 'You can write in **markdown**',
 			// content: 'This is a note',
 			notes: JSON.parse(localStorage.getItem('notes')) || [],
 			// Id of the selected note
@@ -95,9 +94,6 @@ new Vue({
 			localStorage.setItem('notes', JSON.stringify(this.notes))
 			console.log('Notes saved!', new Date())
 		},
-		reportOperation (opName) {
-			console.log('The', opName, 'operation was completed!')
-		},
 		selectNote (note) {
 			this.selectedId = note.id
 			console.log(this.selectedId)
@@ -114,13 +110,5 @@ new Vue({
 		favoriteNote () {
 			this.selectedNote.favorite ^= true
 		}
-
-	},
-
-	// This will be called when the instance is ready
-	created () {
-		// Set the content to the stored value
-		// or to a default string if nothing was saved
-		this.content = localStorage.getItem('content') || 'You can write in **markdown**'
 	},
 })
